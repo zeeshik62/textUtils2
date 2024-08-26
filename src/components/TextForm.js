@@ -37,10 +37,10 @@ const handlePreview =()=>{
     setShowModal(false);
     props.showAlert(" Please enter some text", "warning");
   }else{
-
     const pre= text;
     setPreview(pre);
     props.showAlert(" Preview enabled", "success")
+
   }
 }
 
