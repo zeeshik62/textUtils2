@@ -59,7 +59,7 @@ const handleExtraSpaces=()=>{
         <>
         <div>
       <div className='container' style={{color: props.mode === 'dark' ? 'white' : 'black', important: 'true'}}>
-            <h4>{props.heading}</h4>
+            <h4 className='mb-3'>{props.heading}</h4>
             <div className="mb-3">
           
               <textarea value={text} onChange={handleChange} className="form-control" 
@@ -67,10 +67,10 @@ const handleExtraSpaces=()=>{
                 color: props.mode === 'dark' ? 'white' : 'black'}} id="myBocx" rows="8" ></textarea>
             </div>  
 
-            <button onClick={handleUp} className="btn btn-primary me-3">Uppercase</button>
-            <button onClick={handlelo} className="btn btn-primary me-3">Lowercase</button>
-            <button onClick={handleExtraSpaces} className="btn btn-primary me-3">Remove Spaces</button>
-            <button className="btn btn-primary ms-0 m-3" onClick={() => { handleShowModal(); handlePreview(); }}>Preview Text</button>
+            <button disabled={text.length===0} onClick={handleUp} className="btn btn-primary me-3">Uppercase</button>
+            <button disabled={text.length===0} onClick={handlelo} className="btn btn-primary me-3">Lowercase</button>
+            <button disabled={text.length===0} onClick={handleExtraSpaces} className="btn btn-primary me-3">Remove Spaces</button>
+            <button disabled={text.length===0} className="btn btn-primary ms-0 m-3" onClick={() => { handleShowModal(); handlePreview(); }}>Preview Text</button>
        
        <div>
       {showModal && (
@@ -100,7 +100,7 @@ const handleExtraSpaces=()=>{
     <h4>Your text summary</h4>
     <ul><li><p>{text.length} Character and {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} Words.</p></li></ul>
       
-    <ul><li><p>It will take {0.008 * text.trim().split(/\s+/).length} min to read.</p></li></ul>
+    <ul><li><p>It will take {text.trim() === "" ? 0 : 0.008 *  text.trim().split(/\s+/).length} min to read.</p></li></ul>
     </div>
   
     {/* <button onClick={handlePreview} className="btn btn-primary">Preview text</button>
